@@ -2,19 +2,22 @@
 # sort_race.py
 
 import numpy as np
-import timeit
-from numba import jit
+import timeit  # measures execution time of small code snippits
+from numba import jit  # jit function in numba module can compile functions to
+
+# machine language, so they run faster
 
 
-@jit(nopython=True)
+@jit(nopython=True)  # @jit tells numba to compile the following function
 def init_samples():
     np.random.seed(2021)
-    samples = np.arange(50_000, 0, -1)
+    samples = np.arange(50_000, 0, -1)  # array that starts at zero, ends at 0, in
+    # increments of 1
     return samples
 
 
 @jit(nopython=True)
-def bubble_sort(a):
+def bubble_sort(a):  # bubble sort in compiled code
     last_index = len(a) - 1
     is_sorted = False
     while not is_sorted:
@@ -53,12 +56,14 @@ def median_of_three(a, lo, hi):
 
 
 @jit(nopython=True)
-def quick_sort_partition(a, lo, hi):
+def quick_sort_partition(a, lo, hi):  # This function splits the array into
+    # sublists
 
-    pi = median_of_three(a, lo, hi)  # pivot index
+    pi = median_of_three(a, lo, hi)  # pivot index, look at first, last, and
+    # middle value. Start quicksort with the middle value of the three
     p = a[pi]  # pivot value
 
-    while True:
+    while True:  # decide what goes to left list, what goes to right list
         while a[lo] <= p and lo < pi:
             lo += 1
         while a[hi] > p and hi > pi:
@@ -76,9 +81,12 @@ def quick_sort_partition(a, lo, hi):
 
 
 @jit(nopython=True)
-def quick_sort(a, lo, hi):
-    if lo < hi:
-        p = quick_sort_partition(a, lo, hi)
+def quick_sort(
+    a, lo, hi
+):  # This function takes in array a, left and right index of where
+    # sublist is
+    if lo < hi:  # when lower index less then higher index
+        p = quick_sort_partition(a, lo, hi)  # call quick_sort_partition()
         if p > 0:
             quick_sort(a, lo, p - 1)
         quick_sort(a, p + 1, hi)

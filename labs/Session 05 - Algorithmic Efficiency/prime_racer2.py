@@ -14,11 +14,12 @@ def init_samples(num_samples, min_sample, max_sample):
 
 def is_prime(n):
     if n % 2 == 0:
-        return False
-    for factor in range(3, n, 2):
-        if n % factor == 0:
-            return False
-    return True
+        return False  # test n for being even, if even we don't do anything
+    for factor in range(3, n, 2):  # iterate through list going from 3 to n-1, increment
+        # 2. We do not divide by 1, 2, or n.
+        if n % factor == 0:  # divide by factors in above list, check for no remainder
+            return False  # it can't be prime if it has a remainder
+    return True  # if we can't find a factor, then it's prime
 
 
 def count_primes(samples):
@@ -27,6 +28,9 @@ def count_primes(samples):
         if is_prime(val):
             num_primes += 1
     return num_primes
+
+    # run time is cut down by half, which make sense because we halved the for loops
+    # that we need to do
 
 
 def main():

@@ -16,7 +16,8 @@ def init_samples(num_samples, min_sample, max_sample):
 def is_prime(n):
     if n % 2 == 0:
         return False
-    for factor in range(3, int(np.sqrt(n)), 2):
+    for factor in range(3, int(np.sqrt(n)), 2): #we don't need a list going from 3 
+        #to n-1, going to square root n will do the job
         if n % factor == 0:
             return False
     return True
@@ -28,6 +29,9 @@ def count_primes(samples):
         if is_prime(val):
             num_primes += 1
     return num_primes
+
+    #we again reduced the number of for loops needed to be done, and we see about
+    #a 1000-fold speed up compared to prime_racer2
 
 
 def main():

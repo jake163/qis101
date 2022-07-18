@@ -38,10 +38,12 @@ def display_deck(deck):
 
 
 def deal_cards(deck):
-    for card_pos, card_num in enumerate(deck):
-        new_card_pos = random.randint(0, 51)
-        deck[card_pos] = deck[new_card_pos]
-        deck[new_card_pos] = card_num
+    for card_pos, card_num in enumerate(deck):  # iterate through deck
+        new_card_pos = random.randint(0, 51)  # randomly pick a valid card number
+        deck[card_pos] = deck[new_card_pos]  # the number at the index card_pos gets
+        # moved to a new index, new_card_pos
+        deck[new_card_pos] = card_num  # the number that was already at index
+        # new_card_pos gets moved to card_pos
 
 
 def main():

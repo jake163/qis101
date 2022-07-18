@@ -21,8 +21,10 @@ ranks = [
 ]
 
 
-def init_deck():
-    return list(range(52))
+def init_deck():  # gives us an ordered card deck
+    return list(range(52))  # return list such that each index number is the value at
+    # that index: 0 and index 0, 1 at index 1, etc. Do it by plugging a range
+    # (0 to 51) into the list function
 
 
 def card_name(card_num):
@@ -32,20 +34,24 @@ def card_name(card_num):
 
 def display_deck(deck):
     for card_pos, card_num in enumerate(deck):
-        #print(f"The card in position {card_pos} is the {card_name(card_num)}")
-        print(f"The card in position {card_pos} is the {card_num}")
+        print(f"The card in position {card_pos} is the {card_name(card_num)}")
+        # print(f"The card in position {card_pos} is the {card_num}")
 
 
-def deal_cards(deck):
-    for card_pos, _ in enumerate(deck):
-        new_card_num = random.randint(0, 51)
-        deck[card_pos] = new_card_num
+def deal_cards(deck):  # function to shuffle cards, pass in the ordered deck
+    for card_pos, _ in enumerate(deck):  # unpack tuples (card_pos, "") in deck []
+        new_card_num = random.randint(0, 51)  # randomly give us a valid card number
+        deck[card_pos] = new_card_num  # for each card_pos (index), we assign a random
+        # card number. Problem is we can have repeat numbers, and each card in a deck
+        # (the card number) is supposed to be unique.
 
 
 def main():
-    random.seed(2016)
-    deck = init_deck()
-    deal_cards(deck)
+    random.seed(2016)  # imported random number generator, initial value of 2016,
+    # help us shuffle
+    deck = init_deck()  # initialize our deck
+    deal_cards(deck)  # take our ordered deck, and pass into deal_cards() which should
+    # shuffle those cards
     display_deck(deck)
 
 
