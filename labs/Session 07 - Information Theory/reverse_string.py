@@ -2,24 +2,30 @@
 # reverse.py
 
 
-def reverse_str(a):
-    b = ""
-    for i in range(len(a) - 1, -1, -1):
-        b += a[i]
+def reverse_str(a):  # reverse string a
+    b = ""  # b is an empty string, local variable
+    for i in range(
+        len(a) - 1, -1, -1
+    ):  # range starts at end of string a, stops at i = 0
+        # for a step value of -1 (go backwards)
+        b += a[i]  # add character at location i, add to end of b
     return b
 
 
-def reverse_str2(a):
-    b = ""
-    for i in reversed(range(len(a))):
-        b += a[i]
+def reverse_str2(a):  # reverse string a
+    b = ""  # b is an empty string, local variable
+    for i in reversed(
+        range(len(a))
+    ):  # range starts at end of string a, goes backward to
+        # index 0
+        b += a[i]  # for each i, we add the character at that location to the end of b
     return b
 
 
-def reverse_str3(a):
-    b = ""
-    for c in a:
-        b = c + b
+def reverse_str3(a):  # reverse string a
+    b = ""  # b is an empty string
+    for c in a:  # for index in a
+        b = c + b  # prepend character from a to b
     return b
 
 
@@ -32,8 +38,8 @@ def main():
     print(reverse_str2(s))
     print(reverse_str3(s))
 
-    print("".join(reversed(s)))
-    print(s[::-1])
+    print("".join(reversed(s)))  # concatenate reversed s to empty string
+    print(s[::-1])  # reverse the order of s, array slicing
 
 
 if __name__ == "__main__":

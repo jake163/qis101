@@ -12,7 +12,10 @@ def radline_y(rl, x):
     return (d - x * np.cos(theta)) / np.sin(theta)
 
 
-def radline_connect(pt1, pt2):
+def radline_connect(
+    pt1, pt2
+):  # compute radon projection for x and y, for theta from 0 to
+    # pi exclusive
     x1, y1 = pt1
     x2, y2 = pt2
     # Prevent divide by zero due to a vertical line
@@ -27,7 +30,9 @@ def radline_connect(pt1, pt2):
     return (theta, d)
 
 
-def radline_tangent(rl, pt):
+def radline_tangent(
+    rl, pt
+):  # find perpendicular line of line that passes through point
     theta, d = rl
     # Rotate radon line by 90 degrees, while ensuring
     # theta remains within the interval [0, pi)
@@ -40,7 +45,7 @@ def radline_tangent(rl, pt):
     return (theta, d)
 
 
-def radline_intersect(rl1, rl2):
+def radline_intersect(rl1, rl2):  # find point of intersection for two radon lines
     theta1, d1 = rl1
     theta2, d2 = rl2
     # If two radon lines have the same theta, then
@@ -55,26 +60,29 @@ def radline_intersect(rl1, rl2):
 
 def plot_triangle(ax):
     # Generate three random vertices
-    global ptA, ptB, ptC
-    ptA = np.random.uniform(-10, 10, 2)
+    global ptA, ptB, ptC  # these are global variables, vertices
+    ptA = np.random.uniform(
+        -10, 10, 2
+    )  # array of two random numbers between -10 and 10,
+    # do three times to get three different vertices
     ptB = np.random.uniform(-10, 10, 2)
     ptC = np.random.uniform(-10, 10, 2)
 
     # Formulate the radon line connecting the adjacent vertices
-    global rlAB, rlAC, rlBC
-    rlAB = radline_connect(ptA, ptB)
+    global rlAB, rlAC, rlBC  # global variables, radon lines
+    rlAB = radline_connect(ptA, ptB)  # radon line between vertex a and b
     rlAC = radline_connect(ptA, ptC)
     rlBC = radline_connect(ptB, ptC)
 
     # Plot the edges
     x = np.linspace(ptA[0], ptB[0], 100)
     ax.plot(x, radline_y(rlAB, x), color="purple", linewidth=3, label="Edges")
-    x = np.linspace(ptA[0], ptC[0], 100)
+    x = np.linspace(ptA[0], ptC[0], 100)  # plot vertices and radon lines
     ax.plot(x, radline_y(rlAC, x), color="purple", linewidth=3)
     x = np.linspace(ptB[0], ptC[0], 100)
     ax.plot(x, radline_y(rlBC, x), color="purple", linewidth=3)
 
-    # Plot the extended edges
+    # Plot the extended edges, lines beyond vertices are dotted
     x = np.linspace(-100, 100, 100)
     ax.plot(x, radline_y(rlAB, x), color="purple", linestyle="dotted")
     ax.plot(x, radline_y(rlAC, x), color="purple", linestyle="dotted")
@@ -230,7 +238,10 @@ def plot_incenter(ax):
 
 
 def plot(ax):
-    plot_triangle(ax)
+    plot_triangle(
+        ax
+    )  # run these helper functions with input ax, these find various centers,
+    # which will determine euler line
     plot_circumcenter(ax)
     plot_orthocenter(ax)
     plot_euler_Line(ax)
@@ -250,12 +261,13 @@ def plot(ax):
 
 
 def main():
-    seeds = (2017, 2018, 2020, 2021)
-    seeds_index = 0
+    seeds = (2017, 2018, 2020, 2021)  # base random number initial value
+    seeds_index = 0  # seed = 2017 for 0
 
-    global prng_seed
-    prng_seed = seeds[seeds_index]
-    np.random.seed(prng_seed)
+    global prng_seed  # declare and or change value of global variable, visible in other
+    # function
+    prng_seed = seeds[seeds_index]  # set seeds[index]
+    np.random.seed(prng_seed)  # random number initial value of seeds[0]
 
     fig = plt.figure(os.path.basename(sys.argv[0]))
     gs = fig.add_gridspec(1, 1)
