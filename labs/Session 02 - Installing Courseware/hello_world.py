@@ -1,3 +1,3 @@
 # hello_world.py
 
-print("Hello world!")
+print("Jacob Brunton: Only you can prevent forest fires")

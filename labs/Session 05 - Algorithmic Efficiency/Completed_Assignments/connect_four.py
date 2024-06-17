@@ -2,6 +2,7 @@
 # connect_four.py
 
 
+<<<<<<< HEAD
 def is_winner(board: list) -> str:  # pass in boards, returns a corresponding string
     counter = 0
     for i, array in enumerate(board):  # iterate through list of lists
@@ -43,6 +44,8 @@ def is_winner(board: list) -> str:  # pass in boards, returns a corresponding st
     return winner
 
 
+=======
+>>>>>>> 09efffcfbb028c8b77c33772285a978b2c071a9a
 def main():
     board1 = [
         [0, 0, 0, 0, 0, 0, 0],
@@ -71,11 +74,14 @@ def main():
         [0, 1, 1, 2, 1, 2, 0],
     ]
 
+<<<<<<< HEAD
     boards = [board1, board2, board3]
 
     for num, board in enumerate(boards):
         print(f"{is_winner(board)} is the winner of board {num+1}")
 
+=======
+>>>>>>> 09efffcfbb028c8b77c33772285a978b2c071a9a
 
 if __name__ == "__main__":
     main()
