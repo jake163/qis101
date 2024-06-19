@@ -25,7 +25,7 @@ def plot(ax):
     )
 
     # Plot Taylor Series for cos(x)
-    num_terms = 5
+    num_terms = 20
     xs = sympy.symbols("x")
     poly = sympy.cos(xs).series(xs, 0, num_terms).removeO()
     eqn = sympy.lambdify(xs, poly.as_expr(), modules="numpy")
@@ -38,7 +38,9 @@ def plot(ax):
     dx = xm[1] - xm[0]
     ym[0] = np.cos(0)
     for i in range(1, len(xm)):
-        ym[i] = ym[i - 1] - np.sin(xm[i - 1]) * dx
+        ym[i] = (
+            ym[i - 1] - np.sin(xm[i - 1]) * dx
+        )  # find y based on slope of previous y, and dx
     ax.plot(xm, ym, label="Euler (20 terms)")
 
     ax.set_title(r"Taylor Series for $y = \cos(x)$")

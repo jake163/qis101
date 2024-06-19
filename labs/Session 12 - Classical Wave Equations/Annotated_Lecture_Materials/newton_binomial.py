@@ -35,17 +35,17 @@ def binomial_expand(a, b, c, r, max_t):
 
 
 def plot(ax):
-    x = np.linspace(0, 10, 1000)
+    x = np.linspace(0, 10, 1000) #domain from 0 to 10, 1000 subdomains
 
-    ax.plot(x, 1 / np.power(2 * np.power(x, 2) + 7, 2 / 3), label="Exact")
+    ax.plot(x, 1 / np.power(2 * np.power(x, 2) + 7, 2 / 3), label="Exact") #plot y vs. x
 
     print(f"{'Terms':>5}   Binomial Expansion")
-    for t in range(2, 8):
+    for t in range(2, 8): #going from 2 terms to 8 terms
         eqn = binomial_expand(7, 2, 2, -2 / 3, t)
         print(f"{t:>5} = {printM(eqn[0], 5)}")
-        ax.plot(x, np.array(list(map(eqn[1], x))), label=f"{t} terms")
+        ax.plot(x, np.array(list(map(eqn[1], x))), label=f"{t} terms") #print result
 
-    ax.set_title(r"Binomial Expansion of $y = \sqrt[-2/3]{(2x^2+7)}$")
+    ax.set_title(r"Binomial Expansion of $y = \sqrt[-2/3]{(2x^2+7)}$") #print LaTeX string
     ax.set_xlabel("x")
     ax.set_ylabel("y")
     ax.set_ylim(0, 0.3)
