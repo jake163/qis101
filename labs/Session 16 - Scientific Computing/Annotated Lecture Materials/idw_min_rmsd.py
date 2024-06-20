@@ -62,30 +62,34 @@ def est_height(p):
 def calc_rmsd(p):
     sum_errors = 0.0
     for xi in range(num_intervals):
-        for yi in range(num_intervals): #iterate through x in num intervals, for each x iterate through y
+        for yi in range(
+            num_intervals
+        ):  # iterate through x in num intervals, for each x iterate through y
             act = grid_z[xi, yi]
             est = calc_idw_height(xi, yi, p)
-            sum_errors += (act - est) ** 2 #calculate distance squared between actual and estimate
-    rmsd = np.sqrt(sum_errors / num_samples**2) #calculate rmsd
+            sum_errors += (
+                act - est
+            ) ** 2  # calculate distance squared between actual and estimate
+    rmsd = np.sqrt(sum_errors / num_samples**2)  # calculate rmsd
     return rmsd
 
 
-def plot(ax): #plot 
-    p = np.linspace(1.0, 9.0, 50) #raise the power term from 1 to 9 in steps of 50
-    calc_rmsd_vec = np.vectorize(calc_rmsd) #calculate rmsd
-    rmsd = calc_rmsd_vec(p) #pass p into calc_rmsd_vec
+def plot(ax):  # plot
+    p = np.linspace(1.0, 9.0, 50)  # raise the power term from 1 to 9 in steps of 50
+    calc_rmsd_vec = np.vectorize(calc_rmsd)  # calculate rmsd
+    rmsd = calc_rmsd_vec(p)  # pass p into calc_rmsd_vec
 
-    min_rmsd = np.amin(rmsd) #minimizes the rmsd
-    best_p = p[np.argmin(rmsd)] #the best p value is the one that minimizes the error
+    min_rmsd = np.amin(rmsd)  # minimizes the rmsd
+    best_p = p[np.argmin(rmsd)]  # the best p value is the one that minimizes the error
 
-    ax.plot(p, rmsd) #makes a plot with rmsd vs p
-    ax.scatter(best_p, min_rmsd, color="red") #plot the best p
+    ax.plot(p, rmsd)  # makes a plot with rmsd vs p
+    ax.scatter(best_p, min_rmsd, color="red")  # plot the best p
 
     ax.set_title("Inverse Distance Weighting (p vs RMSD)")
     ax.set_xlabel("p (Power) term")
     ax.set_ylabel("RMSD (Act vs. Est)")
 
-    ax.text(5.0, 3.0, f"best p = {best_p:.4f}", ha="left") #shows message
+    ax.text(5.0, 3.0, f"best p = {best_p:.4f}", ha="left")  # shows message
 
 
 def main():

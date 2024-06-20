@@ -8,17 +8,18 @@ from pygame import Color
 
 
 def plot_mandelbrot_set(ss):
-    max_iter = 100
+    max_iter = 100  # iterate each point up to 100 times.
+    # if it doesn't escape by then, it's black
     radius = 16
 
     for sy in reversed(range(ss.screen_height)):
         wy = ss.world_y(sy)
-        for sx in range(ss.screen_width):
+        for sx in range(ss.screen_width):  # iterate in world coordinates
             wx = ss.world_x(sx)
             zx, zy = wx, wy
             zx_2, zy_2 = zx * zx, zy * zy
             iter = 0
-            while zx_2 + zy_2 < radius and iter < max_iter:
+            while zx_2 + zy_2 < radius and iter < max_iter:  # iteration procedure
                 nx = zx_2 - zy_2 + wx
                 ny = 2 * zx * zy + wy
                 zx = nx
@@ -27,11 +28,12 @@ def plot_mandelbrot_set(ss):
                 zy_2 = zy * zy
                 iter += 1
             # Select color using HSV encoding
-            hue = int(360 * iter / max_iter)
+            hue = int(360 * iter / max_iter)  # pixel gets a unique hue
             saturation = 100
-            value = 100 if iter < max_iter else 0
+            value = 100 if iter < max_iter else 0  # if it took more then 100 iter,
+            # then it is colored black
             clr = Color(0)
-            clr.hsva = (hue, saturation, value)
+            clr.hsva = (hue, saturation, value)  # pixel gets unique color
             ss.set_screen_pixel(sx, sy, (clr.r, clr.g, clr.b))
         ss.flip()
 
@@ -51,7 +53,7 @@ def handle_events(ss, event):
 def main():
     ss = SimpleScreen(
         world_rect=((-2.2, -1.51), (1, 1.51)),
-        screen_size=(900, 900),
+        screen_size=(1080, 1080),
         draw_function=plot_mandelbrot_set,
         event_function=handle_events,
         title="Mandelbrot Set",

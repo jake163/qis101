@@ -2,7 +2,7 @@
 # circle_area.py
 
 import numpy as np
-import scipy.integrate #import scipy's integrate module
+import scipy.integrate  # import scipy's integrate module
 
 
 def f(x):
@@ -32,15 +32,15 @@ def simpsons_rule(f, a, b, intervals):
 
 
 def main():
-    a, b = 0.0, 1.0 #bounds of integration (unit circle)
+    a, b = 0.0, 1.0  # bounds of integration (unit circle)
 
-    intervals = int(1e6) #one million subintervals
+    intervals = int(1e6)  # one million subintervals
 
     print("Integrating " "4 * sqrt(1 - x^2)")
     print(f" over [{a}, {b}] using {intervals:,} intervals")
     print()
 
-    area_actual = F(b) - F(a) #analytical integral
+    area_actual = F(b) - F(a)  # analytical integral
     print(f"Analytic (Exact) : {area_actual:.14f}")
     print()
 

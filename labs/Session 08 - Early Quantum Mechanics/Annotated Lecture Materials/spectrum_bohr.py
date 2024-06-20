@@ -2,11 +2,7 @@
 # spectrum_bohr.py
 
 
-<<<<<<< HEAD:labs/Session 08 - Early Quantum Mechanics/Annotated_Lecture_Materials/spectrum_bohr.py
 def main():  # defined constants
-=======
-def main():
->>>>>>> 09efffcfbb028c8b77c33772285a978b2c071a9a:labs/Session 08 - Early Quantum Mechanics/spectrum_bohr.py
     eCharge = 1.602e-19
     eMass = 9.109e-31
     permittivity = 8.854e-12
@@ -25,12 +21,8 @@ def main():
             # Final energy level
             Ef = -E0 / pow(f, 2)
             # Formula for waveLength in nanometers
-<<<<<<< HEAD:labs/Session 08 - Early Quantum Mechanics/Annotated_Lecture_Materials/spectrum_bohr.py
             waveLength = hPlank * speedLight / (Ei - Ef) * 1e9  # rearrange formula for
             # photon energy
-=======
-            waveLength = hPlank * speedLight / (Ei - Ef) * 1e9
->>>>>>> 09efffcfbb028c8b77c33772285a978b2c071a9a:labs/Session 08 - Early Quantum Mechanics/spectrum_bohr.py
             print(f"{f:>3,}{waveLength:10.0f} nm")
         print()
 

@@ -37,36 +37,6 @@ def display_deck(deck):
         print(f"The card in position {card_pos} is the {card_name(card_num)}")
 
 
-<<<<<<< HEAD
-def deal_cards(deck):
-    already_dealt = [False] * 52
-    for card_pos, _ in enumerate(deck):
-        new_card_num = random.randint(0, 51)
-        while already_dealt[new_card_num]:
-            new_card_num = random.randint(0, 51)
-        deck[card_pos] = new_card_num
-        already_dealt[new_card_num] = True
-
-
-def main():
-    random.seed(2016)
-
-    deck = init_deck()
-
-    total_deals = 10000
-
-    start_time = time.process_time()
-
-    for _ in range(0, total_deals):
-        deal_cards(deck)
-
-    elapsed_time = time.process_time() - start_time
-
-    display_deck(deck)
-
-    print(f"Total deals: {total_deals:,}")
-    print(f"Total run time (sec): {elapsed_time:.3f}\n")
-=======
 def deal_cards(deck):  # pass in the ordered deck to be shuffled
     already_dealt = [False] * 52  # list of "false" bools, 52 of them
     for card_pos, _ in enumerate(deck):  # iterate through list of tuples (deck)
@@ -104,7 +74,6 @@ def main():
     print(f"Total deals: {total_deals:,}")
     print(f"Total run time (sec): {elapsed_time:.3f}\n")  # prints time to deal
     # 10000 decks to three digits, \n creates a new blank line that follows {}
->>>>>>> 09efffcfbb028c8b77c33772285a978b2c071a9a
 
 
 if __name__ == "__main__":

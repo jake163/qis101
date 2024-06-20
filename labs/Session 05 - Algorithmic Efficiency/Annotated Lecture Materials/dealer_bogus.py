@@ -21,15 +21,10 @@ ranks = [
 ]
 
 
-<<<<<<< HEAD
-def init_deck():
-    return list(range(52))
-=======
 def init_deck():  # gives us an ordered card deck
     return list(range(52))  # return list such that each index number is the value at
     # that index: 0 and index 0, 1 at index 1, etc. Do it by plugging a range
     # (0 to 51) into the list function
->>>>>>> 09efffcfbb028c8b77c33772285a978b2c071a9a
 
 
 def card_name(card_num):
@@ -40,24 +35,7 @@ def card_name(card_num):
 def display_deck(deck):
     for card_pos, card_num in enumerate(deck):
         print(f"The card in position {card_pos} is the {card_name(card_num)}")
-<<<<<<< HEAD
-
-
-def deal_cards(deck):
-    for card_pos, _ in enumerate(deck):
-        new_card_num = random.randint(0, 51)
-        deck[card_pos] = new_card_num
-
-
-def main():
-    random.seed(2016)
-    deck = init_deck()
-    deal_cards(deck)
-=======
-<<<<<<< HEAD
         # print(f"The card in position {card_pos} is the {card_num}")
-=======
->>>>>>> 8714fac53a740147291686210ad82b687caf566b
 
 
 def deal_cards(deck):  # function to shuffle cards, pass in the ordered deck
@@ -74,7 +52,6 @@ def main():
     deck = init_deck()  # initialize our deck
     deal_cards(deck)  # take our ordered deck, and pass into deal_cards() which should
     # shuffle those cards
->>>>>>> 09efffcfbb028c8b77c33772285a978b2c071a9a
     display_deck(deck)
 
 

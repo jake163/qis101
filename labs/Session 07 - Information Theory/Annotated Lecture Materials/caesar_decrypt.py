@@ -2,7 +2,7 @@
 # caesar_decrypt.py
 
 import sys
-import os
+
 
 def main(file_name, key_shift):
     with open(
@@ -26,5 +26,3 @@ if __name__ == "__main__":  # run from command line
         file_name = sys.argv[1]  # filename is second item in argument vector
         key_shift = int(sys.argv[2])  # keyshift is the third item in argument vector
         main(file_name, key_shift)  # pass in file_name and key_shift
-        with open(os.path.dirname(sys.argv[0]) + "/decrypted_ciphertext2.txt", 'w') as f:
-            f.write(main('caesar_decrypt.py', 154))

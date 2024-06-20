@@ -46,6 +46,10 @@ def deal_cards(deck):
         # new_card_pos gets moved to card_pos
 
 
+# This deal_cards function is faster (doesn't waste time), and it is responsible
+# for the speedup.
+
+
 def main():
     random.seed(2016)
     deck = init_deck()

@@ -38,7 +38,8 @@ def main():
             # error with 4 digits after decimal
         )
 
-#gauss' estimate improves with increasing radius, and E(r) converges to gauss' proposed 
-# value for large r 
+
+# gauss' estimate improves with increasing radius, and E(r) converges to gauss' proposed
+# value for large r
 if __name__ == "__main__":
     main()

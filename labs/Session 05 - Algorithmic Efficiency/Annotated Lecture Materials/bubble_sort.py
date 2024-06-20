@@ -5,39 +5,16 @@ import numpy as np
 import time
 
 
-<<<<<<< HEAD
-def init_samples():
-    samples = []
-    for i in range(100):
-        samples.append(np.random.randint(1, 101))
-=======
 def init_samples():  # define a function, no input
     samples = []  # make a empty list
     for i in range(100):
         samples.append(np.random.randint(1, 101))  # get a list with a hundred
         # random numbers. For each i, a random number is added to the end of
         # the list.
->>>>>>> 09efffcfbb028c8b77c33772285a978b2c071a9a
     return samples
 
 
 def bubble_sort(samples):
-<<<<<<< HEAD
-    last_index = len(samples) - 1
-    is_sorted = False
-    while not is_sorted:
-        swap_needed = False
-        for i in range(last_index):
-            if samples[i] > samples[i + 1]:
-                temp = samples[i]
-                samples[i] = samples[i + 1]
-                samples[i + 1] = temp
-                swap_needed = True
-        if not swap_needed:
-            is_sorted = True
-        else:
-            last_index -= 1
-=======
     last_index = len(samples) - 1  # defines where you need to start for a given
     # pass, i.e. don't have to start at the beginning of the list each time.
     is_sorted = False  # assume that the list is not sorted
@@ -55,28 +32,10 @@ def bubble_sort(samples):
             is_sorted = True  # leave the while loop
         else:
             last_index -= 1  # shift the starting point up by one
->>>>>>> 09efffcfbb028c8b77c33772285a978b2c071a9a
     return samples
 
 
 def main():
-<<<<<<< HEAD
-    np.random.seed(2021)
-
-    samples = init_samples()
-    print(f"Unsorted: {samples}")
-
-    samples = bubble_sort(samples)
-    print(f"Sorted: {samples}")
-
-    num_trials = 10_000
-    print(f"Running {num_trials:,} trials . . .")
-    start_time = time.process_time()
-
-    for _ in range(num_trials):
-        samples = init_samples()
-        samples = bubble_sort(samples)
-=======
     np.random.seed(2021)  #
 
     samples = init_samples()  # creating list of random numbers
@@ -92,7 +51,6 @@ def main():
     for _ in range(num_trials):  # iterate through list of length 10,000
         samples = init_samples()  # create a list of random numbers
         samples = bubble_sort(samples)  # sort that list by number size
->>>>>>> 09efffcfbb028c8b77c33772285a978b2c071a9a
 
     elapsed_time = time.process_time() - start_time
 
